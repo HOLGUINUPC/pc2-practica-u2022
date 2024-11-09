@@ -1,6 +1,13 @@
-namespace pc2_practica_u2022.Shared.Infrastructure.Persistence.EFC.Repositories;
+using upcpc2_web.Shared.Domain.Repositories;
+using upcpc2_web.Shared.Infrastructure.Persistence.EFC.Configuration;
 
-public class UnitOfWork
+namespace upcpc2_web.Shared.Infrastructure.Persistence.EFC.Repositories;
+
+public class UnitOfWork(AppDbContext context) : IUnitOfWork
 {
-    
+    // inheritedDoc
+    public async Task CompleteAsync()
+    {
+        await context.SaveChangesAsync();
+    }
 }

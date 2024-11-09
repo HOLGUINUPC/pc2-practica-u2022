@@ -1,11 +1,14 @@
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
+using pc2_practica_u2022.Crm.Domain.Model.Aggregates;
+using pc2_practica_u2022.Crm.Domain.Model.ValueObjects;
+using pc2_practica_u2022.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 
-namespace upcpc2_web.Shared.Infrastructure.Persistence.EFC.Configuration;
+namespace pc2_practica_u2022.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 public class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions options) : base(options)
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
 
@@ -38,7 +41,41 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(builder);
 
+        // Configuración de Rating
+        builder.Entity<Rating>()
+            .ToTable("Rating")
+            .HasKey(p => p.Id);
 
+        builder.Entity<Rating>()
+            .Property(p => p.Id)
+            .IsRequired()
+            .ValueGeneratedOnAdd();
+
+        builder.Entity<Rating>()
+            .Property(r => r.ProductId)
+            .HasConversion(
+                v => v.Productid, // Almacena como long en la base de datos
+                v => new ProductId(v) // Convierte de long a ProductId al leer
+            )
+            .IsRequired();
+
+        // Configuración para UserEmailAddress como string en la base de datos
+        builder.Entity<Rating>()
+            .Property(r => r.UserEmailAddress)
+            .HasConversion(
+                v => v.ToString(), // Convierte a string al almacenar
+                v => new EmailAddress(v) // Convierte de string a EmailAddress al leer
+            )
+            .IsRequired();
+
+        builder.Entity<Rating>()
+            .Property(r => r.RatingAspect)
+            .IsRequired();
+
+        builder.Entity<Rating>()
+            .Property(r => r.Comment)
+            .IsRequired();
+
+        builder.UseSnakeCaseNamingConvention();
     }
-
 }

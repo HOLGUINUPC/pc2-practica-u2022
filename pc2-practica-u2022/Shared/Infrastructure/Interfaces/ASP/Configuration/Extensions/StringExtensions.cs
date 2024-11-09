@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace upcpc2_web.Shared.Infrastructure.Interfaces.ASP.Configuration.Extensions;
+namespace pc2_practica_u2022.Shared.Infrastructure.Interfaces.ASP.Configuration.Extensions;
 
 /// <summary>
 ///     Extension methods for <see cref="string" />.

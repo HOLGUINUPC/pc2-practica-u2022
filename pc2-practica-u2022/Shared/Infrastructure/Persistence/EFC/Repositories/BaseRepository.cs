@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using upcpc2_web.Shared.Domain.Repositories;
-using upcpc2_web.Shared.Infrastructure.Persistence.EFC.Configuration;
+using pc2_practica_u2022.Shared.Domain.Repositories;
+using pc2_practica_u2022.Shared.Infrastructure.Persistence.EFC.Configuration;
 
-namespace upcpc2_web.Shared.Infrastructure.Persistence.EFC.Repositories;
+namespace pc2_practica_u2022.Shared.Infrastructure.Persistence.EFC.Repositories;
 
 public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
 {

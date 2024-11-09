@@ -1,5 +1,6 @@
 
-namespace upcpc2_web.Shared.Domain.Repositories;
+
+namespace pc2_practica_u2022.Shared.Domain.Repositories;
 
 public interface IBaseRepository<TEntity>
 {

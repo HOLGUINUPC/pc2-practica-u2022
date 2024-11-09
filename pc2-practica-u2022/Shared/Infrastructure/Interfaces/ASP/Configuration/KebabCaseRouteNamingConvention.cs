@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using upcpc2_web.Shared.Infrastructure.Interfaces.ASP.Configuration.Extensions;
+using pc2_practica_u2022.Shared.Infrastructure.Interfaces.ASP.Configuration.Extensions;
 
-namespace upcpc2_web.Shared.Infrastructure.Interfaces.ASP.Configuration;
+namespace pc2_practica_u2022.Shared.Infrastructure.Interfaces.ASP.Configuration;
 
 public class KebabCaseRouteNamingConvention: IControllerModelConvention
 {
